@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\UpdateBrandRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,6 +16,18 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::paginate(10);
+        $brands = Brand::
+//        whereExists(function ($query) {
+//            $query->select(DB::raw(1))
+//                ->from('products')
+//                ->whereColumn('brands.id', 'products.brand_id');
+//        })
+//           whereNotIn('id',function ($query){
+//                $query->select('brand_id')
+//                    ->from('products');
+//            })
+
+            paginate(10);
         return view('brands.index', compact('brands'));
     }
 

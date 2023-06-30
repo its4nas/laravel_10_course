@@ -32,3 +32,6 @@ Route::post('/logout', [AuthUserController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
+    Route::get('products/trashed', [ProductController::class, 'deleted_index'])->name('products.trashed');
+    Route::get('products/restore/{id}', [ProductController::class, 'restore'])->name('products.restore');
+    Route::delete('products/forceDelete/{id}', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
