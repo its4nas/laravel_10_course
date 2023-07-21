@@ -21,6 +21,8 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+Route::get('/google-map', [MapController::class, 'index']);
+
 Route::get('/', function () {
     return view('welcome');
 });
